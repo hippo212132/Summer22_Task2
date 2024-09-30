@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Nav{
+    background-color: antiquewhite;
+    padding: 50px;
+
+}
+
+.navbarbtn {
+    display: flex;
+    
+
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    padding: 75px;
+    gap: 15px;
+    background-color: rgba(128, 128, 128, 0.13);
+    border-radius: 50px;
+}
+
+.wholepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+}
+
+.signup div input {
+    padding-right: 120px;
+
+}
