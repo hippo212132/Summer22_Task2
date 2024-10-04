@@ -1,23 +1,40 @@
+
 <!DOCTYPE html>
 <html>
     <head>
     <title>Home</title>
     <link rel="stylesheet" href="static/style.css">
     </head>
+    <nav class="Nav"> 
+        <ul class="navbar">
+            <li><a href="#">ToKa Fitness</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            
+            <li class="droplist">
+                <a href="#">
+                    Information
+                </a>
+                
+                <ul class="dropdown">
+                <li class="P"><a href="#">Personal Training Sessions</a></li>
+                <li class="H"><a href="#">Health and Life style</a></li>
+                <li class="C"><a href="#">Contact</a></li>
+                </ul>
+                
+            </li>
+            <div class="navbtn">
+
+                <a href="/login"><button  class="login">Login</button></a>
+                <a href="/signup"><button href="http://127.0.0.1:5000/signup" class="signupBTN"> Signup</button></a>
+            </div>
+
+          </ul>
+    </nav>
 
     <body>
-        <nav class="Nav"> 
-            <ul class="navbar">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-                <div class="navbtn">
-                    <button class="login">Login</button>
-                    <button class="signup"> Signup</button>
-                </div>
-
-              </ul>
-        </nav>
+        
+        
         {%block content%} {%endblock%}
     </body>
 

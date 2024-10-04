@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="eng">
-    <head>
-        <title>
-            Signup
-        </title>
-        <link rel="stylesheet" href="static/style.css">
-    </head>
-    <body class="wholepage">
+{%extends "layout.html"%} 
+
+{%block content%}
+
+
+
+    <div class="wholepage">
         <div class="signup">
             <h1>SignUp To Have Fun!!!</h1>
+            <form method="POST" action="/signup">
             <div class="emailG">
                 <label>Email</label>
                 <input type="text" name="email"  placeholder="Email">
@@ -26,7 +25,9 @@
                 <input type="password" name="pass"  placeholder="Password">
             </div>
             <button class="signBTN"> SignUp</button>
+            </form>
 
         </div>
-    </body>
-</html>
+    </div>
+
+{%endblock%}
