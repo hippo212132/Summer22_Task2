@@ -8,26 +8,31 @@
         <div class="signup">
             <h1>SignUp To Have Fun!!!</h1>
             <form id="signup" method="POST" action="/signup">
+            <div class="inputbox" >
             <div class="emailG">
-                <label>Email</label>
+                
                 <input type="text" name="email"  placeholder="Email">
             </div>
             <div class="userG">
-                <label>Username</label>
+                
                 <input type="text" name="name"  placeholder="Username">
             </div>
             <div class="passG">
-                <label>Password</label>
+                
                 <input type="password" name="password"  placeholder="Password">
             </div>
             <div class="CpassG">
-                <label>Confirm-Password</label>
-                <input type="password" name="password"  placeholder="Password">
+                
+                <input type="cpass" name="cpass"  placeholder="Confirm Password">
+            </div>
             </div>
             <button name="action" value='register' class="signBTN"> SignUp</button>
+            {%if error%}
+            <p class="error"> {{error}}</p>
+            {%endif%}
             </form>
 
         </div>
-    </div>
+        </div>
 
 {%endblock%}

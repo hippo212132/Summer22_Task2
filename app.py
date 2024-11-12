@@ -39,13 +39,12 @@ def home():
             email = request.form.get("email")
             name = request.form.get("name")
             password = request.form.get("password")
+            cpass = request.form.get("cpass")
             #gathers information submitted via the form
             if email == '' or name == '' or password == '':
                 return redirect("/signup")
             #error handling - if each box = nothing will refresh page.
-            
-            else:
-
+            elif cpass == password:
                 hash(password)
                 #hashing
 
@@ -53,6 +52,9 @@ def home():
                 #inserts form inputted values into the database with hashes password
                 return redirect("/login")
                 #sends to login once inserted into database
+            else:
+                return render_template("signup.html", error="Passwords did not match")
+            
             
     return render_template("signup.html")
 

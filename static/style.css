@@ -21,6 +21,9 @@
     margin-right: 60%;
 }
 
+.error {
+    color: red;
+}
 .navbar a:hover {
     text-decoration: underline;
     color: white;
@@ -74,6 +77,8 @@ body {
 
 }
 
+
+
 .signup {
     display: flex;
     flex-direction: column;
@@ -82,6 +87,7 @@ body {
     background-color: rgba(0, 0, 0, 0);
     border-radius: 50px;
     border-color: white;
+
 }
 
 .signuptext {
@@ -110,10 +116,19 @@ body {
     background-image: url("stock2.png");
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position-y: 15%;
+    background-position: center top;
     background-size: 100% 40%;
     
+    
+   
+    
 }
+
+.signup {
+    border: 2px solid;
+    background-color: transparent;
+}
+
 
 
 
@@ -128,10 +143,14 @@ body {
 .signup div {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-content: center;
+    align-items: start
+    gap: 10px;
+    border-radius: 20px;
+    padding: 15px;
 
 }
+
+
 
 .signup div input {
     padding-right: 120px;
