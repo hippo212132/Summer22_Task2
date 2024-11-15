@@ -1,0 +1,35 @@
+
+{%extends "layout.html"%} 
+
+{%block content%}
+    <div class="wholepage">
+    <div class="Login">
+        <h1>Login</h1>
+        <form id="login" method="POST" action="/login">
+        <div class="inputbox" >
+        <div class="emailG">
+            
+            <input type="text" name="email"  placeholder="Email">
+        </div>
+        <div class="userG">
+            
+            <input type="text" name="name"  placeholder="Username">
+        </div>
+        <div class="passG">
+            
+            <input type="password" name="password"  placeholder="Password">
+        </div>
+        <button name="action" value='register' class="signBTN"> SignUp</button>
+        {%if error%}
+        <p class="error"> {{error}}</p>
+        {%endif%}
+        </form>
+
+    </div>
+        </div>
+
+
+
+
+
+    {%endblock%}
