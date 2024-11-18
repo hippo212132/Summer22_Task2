@@ -14,13 +14,20 @@ def hash(phrase): #This is a function used to hash a new password
 
 
 def create_user(type, first_name, last_name, email, password):
-    
+    print("before user")
     password = hash(password)
 
-    cur.execute("INSERT INTO users (type, last_name, email, name, password) VALUES (?,?,?,?,?)", (type, email, first_name, last_name, password))
+    cur.execute("INSERT INTO users (type, last_name, email, name, password) VALUES (?,?,?,?,?)", (type, email, first_name, last_name, password,))
     con.commit()
+    print("after daddy")
 
 
     id = cur.lastrowid 
 
     return user(id, type, first_name, last_name, email, password)
+
+def check_email(email):
+
+    cur.execute("SELECT * FROM users WHERE email = ?", (email,))
+
+    return cur.fetchone()
