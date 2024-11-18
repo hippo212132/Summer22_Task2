@@ -1,13 +1,13 @@
-{%extends "layout.html"%} 
+{% extends "layout.html" %} 
 
-{%block content%}
+{% block content %}
 
 
 
     <div class="wholepage">
         <div class="signup">
             <h1>SignUp To Have Fun!!!</h1>
-            <form id="signup" method="POST" action="/signup">
+            <form name="signup" method="post" action="/signup">
             <div class="inputbox" >
             <div class="emailG">
                 
@@ -15,7 +15,8 @@
             </div>
             <div class="userG">
                 
-                <input type="text" name="name"  placeholder="Username">
+                <input type="text" name="name"  placeholder="firstname">
+                <input type="text" name="lastname" placeholder="lastname">
             </div>
             <div class="passG">
                 
@@ -23,16 +24,17 @@
             </div>
             <div class="CpassG">
                 
-                <input type="cpass" name="cpass"  placeholder="Confirm Password">
+                <input type="password" name="cpass"  placeholder="Confirm Password">
             </div>
             </div>
             <button name="action" value='register' class="signBTN"> SignUp</button>
-            {%if error%}
-            <p class="error"> {{error}}</p>
-            {%endif%}
+
+            {% if error %}
+            <p class="error"> {{ error }}</p>
+            {% endif %}
             </form>
 
         </div>
         </div>
 
-{%endblock%}
+{% endblock %}
