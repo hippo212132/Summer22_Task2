@@ -31,3 +31,14 @@ def check_email(email):
     cur.execute("SELECT * FROM users WHERE email = ?", (email,))
 
     return cur.fetchone()
+
+
+def check_user(email, password):
+
+    password = hash(password)
+
+    cur.execute("SELECT * FROM users WHERE email = ? AND password = ?", (email, password,))
+
+    
+
+    return cur.fetchone()

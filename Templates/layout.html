@@ -5,10 +5,11 @@
     <title>Home</title>
     <link rel="stylesheet" href="static/style.css">
     </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <nav class="Nav"> 
         <ul class="navbar">
             <div class="logo">
-            <li><a href="#">GibJohns</a></li>
+            <li href="/"><a href="/">GibJohns</a></li>
             </div>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact</a></li>
@@ -27,14 +28,18 @@
             </li>
             <div class="navbtn">
                 {%if user%}
-                <a href="/">
-                    <button class="profile">
-                        <p> Profile </p>
-                    </button>
-                </a>
+                <li class="droplist">
+                    <a  class="profile" href="#">
+                        Profile
+                    </a>
+                    
+                    <ul class="dropdown">   
+                    <li class="P"><a href="#">Account</a></li>
+                    <li  class="C"><a href="/logout">Logout</a></li>
+                    </ul>
                 {% else %}
 
-                <a href="/login"><button  class="login">Login</button></a>
+                <a href="/login" ><button href="http://127.0.0.1:5000/login"  class="login">Login</button></a>
                 <a href="/signup"><button href="http://127.0.0.1:5000/signup" class="signupBTN"> Signup</button></a>
                 {% endif %}
             </div>

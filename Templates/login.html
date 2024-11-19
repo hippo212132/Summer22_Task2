@@ -2,19 +2,23 @@
 {%extends "layout.html"%} 
 
 {%block content%}
+
+
     <div class="wholepage">
     <div class="Login">
-        <form action="/signup" method="POST" >
+        <form name="login" action="login" method="POST">
             <div class="loginInputs">
                 <input type="text" name="email" placeholder="Email">
-                <input type="text" name="name" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
 
-                <button class="LoginButton" value="LOGIN" name="action2">
+                <button class="LoginButton" value="LOGIN" name="action">
                     Submit
                 </button>
+                {% if error %}
+                <p class="error"> {{ error }}</p>
+                {% endif %}
 
-            </div>>
+            </div>
         </form>
 
     </div>
@@ -23,5 +27,4 @@
 
 
 
-
-    {%endblock%}
+{%endblock%}

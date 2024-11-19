@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_session import Session
+from flask_login import login_manager, login_required, logout_user
 import db
 
 
@@ -23,8 +24,7 @@ Session(app)
 def index():
     if session.get("user"):
         return render_template("index.html", user=session["user"]) #If user is logged in, send user to index
-    else:
-        return render_template("index.html")
+    return redirect("/login")
 
 
 
@@ -43,7 +43,7 @@ def home():
         last_name = request.form.get("lastname")
         email = request.form.get("email")
         if db.check_email(email):
-            return redirect("login.html")
+            return render_template("signup.html", error="email already taken")
         password = request.form.get("password")
         cpass = request.form.get("cpass")
         
@@ -61,7 +61,7 @@ def home():
             #Uses the function from db.py to create new user and hash password
             session["user"] = user #identifing the user as logged in
 
-            return redirect("/")
+            return render_template("index.html", user=session["user"])
     else:
                  
             
@@ -75,31 +75,74 @@ def home():
 
 
 
-@app.route("/login", methods = ["GET", "POST"])
+# @app.route("/login", methods = ["GET", "POST"])
+# def login():
+    
+#     if session.get("user"):
+
+#         return redirect("/")
+    
+
+#     if request.method == "GET":
+#         print("HELLO")
+#         type = "student"
+            
+#         first_name = request.form.get("name")
+
+#         email = request.form.get("email")
+            
+#         print("HELLO 2")
+#         last_name = request.form.get("lastname")
+
+#         password = request.form.get("password")
+
+#         user = db.check_user(type, email, first_name, last_name, password)
+
+#         session["user"] = user
+#         print("HELLO 3")
+#         return render_template("index.html", user=session["user"])
+        
+#     else:
+#         return render_template("login.html", error="Incorrect information")
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    
-    if not session.get("user"):
-
+    if session.get("user"):
         return redirect("/")
+    if request.method == "POST":
+        type = "student"
+        first_name = request.form.get("name")
+        email = request.form.get("email")
+        last_name = request.form.get("last_name")
+        password = request.form.get("password")
+        user = db.check_user(email, password)
+
+        #  session["user"] = user #identifing the user as logged in
+
+        #     return render_template("index.html", user=session["user"])
+        
+        if user:
+            session["user"] = user
+            return render_template("index.html", user=session["user"])
+        else:
+            return render_template("login.html", error="Incorrect information")
     
-    elif request.method == "POST":
-            
-            username = request.form.get["name"]
+    return render_template("login.html")
+ 
 
-            email = request.form.get["email"]
-
-            
-
-            password = request.form.get["password"] 
-
-
-
-            db.execute("SELECT * FROM users WHERE email = ? AND name = ? AND password = ? VALUES (?)"  , (email, username, password)) 
-            return redirect("/login") 
+           
         
        
-    else:
-        return render_template("login.html", error="Credentials didnt match")
+
+    
+@app.route("/logout")
+def logout():
+
+    session.clear()
+   
+    return redirect("/")
+
+    
     
     
 
