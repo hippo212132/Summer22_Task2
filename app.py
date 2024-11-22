@@ -43,8 +43,12 @@ def home():
         last_name = request.form.get("lastname")
         email = request.form.get("email")
         if db.check_email(email):
-            return render_template("signup.html", error="email already taken")
+            return render_template("signup.html", error="Email already taken, try again!")
+        if "@" not in email:
+            return render_template("signup.html", error="Invalid Format")
         password = request.form.get("password")
+        if len(password) <  8:
+            return render_template("signup.html", error="Please enter 8 characters or more")
         cpass = request.form.get("cpass")
         
         #gathers information submitted via the form
@@ -74,36 +78,6 @@ def home():
 
 
 
-
-# @app.route("/login", methods = ["GET", "POST"])
-# def login():
-    
-#     if session.get("user"):
-
-#         return redirect("/")
-    
-
-#     if request.method == "GET":
-#         print("HELLO")
-#         type = "student"
-            
-#         first_name = request.form.get("name")
-
-#         email = request.form.get("email")
-            
-#         print("HELLO 2")
-#         last_name = request.form.get("lastname")
-
-#         password = request.form.get("password")
-
-#         user = db.check_user(type, email, first_name, last_name, password)
-
-#         session["user"] = user
-#         print("HELLO 3")
-#         return render_template("index.html", user=session["user"])
-        
-#     else:
-#         return render_template("login.html", error="Incorrect information")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
